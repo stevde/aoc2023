@@ -2,8 +2,11 @@ from __future__ import annotations
 from ast import List
 from curses.ascii import isdigit
 from dataclasses import dataclass, field
+import logging
 from typing import Iterable
-from venv import logger
+
+
+logger = logging.getLogger()
 
 
 @dataclass(eq=True, frozen=True)
@@ -94,6 +97,7 @@ def vicinity(coord: Coord) -> list[Coord]:
         Coord(coord.x + 1, coord.y - 1),
     ]
 
+
 def get_numbers_in_vicinity(engine: EngineBlock, anchor: Coord) -> list[PartNumber]:
     numbers = set()
     for coord in vicinity(anchor):
@@ -126,7 +130,7 @@ def part_two(data):
             numbers = get_numbers_in_vicinity(engine, coord)
             if len(numbers) == 2:
                 a, b = numbers[0].value, numbers[1].value
-                out += a*b
+                out += a * b
                 logger.info(f"{symbol} found at {coord}: {a} x {b} = {a*b}")
                 logger.info(f"Running total: {out}")
 

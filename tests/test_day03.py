@@ -54,4 +54,4 @@ def test_part_two_sample(sample_data):
 
 
 def test_part_two_sample(test_data):
-    assert part_two(test_data) == 514969
+    assert part_two(test_data) == 78915902
